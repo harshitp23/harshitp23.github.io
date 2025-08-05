@@ -1,0 +1,79 @@
+/* Page Background and Base Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F2F2F2;
+  color: #1C1C1C;
+  margin: 40px;
+  padding: 20px;
+}
+
+/* Navigation Styles */
+nav ul {
+  display: flex;
+  gap: 15px;
+  list-style-type: none;
+  padding: 0;
+  background-color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a {
+  text-decoration: none;
+  color: #2D9CDB;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #56CC9D;
+}
+
+/* Headings */
+h1 {
+  font-size: 2.5em;
+  color: #1C1C1C;
+}
+
+h2, h3 {
+  color: #2D9CDB;
+}
+
+/* Lists */
+ul {
+  background-color: #FFFFFF;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+dl {
+  background-color: #FFFFFF;
+  padding: 15px;
+  border-left: 4px solid #56CC9D;
+  border-radius: 6px;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 20px 0;
+}
+
+/* Paragraph Styling */
+p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+/* Links */
+a {
+  color: #2D9CDB;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #56CC9D;
+}
