@@ -155,42 +155,6 @@ nav ul li a:hover {
 }
 
 
-/* Places to glance section */
-.places-to-glance {
-    text-align: center;
-    padding: 50px 20px;
-    background: #f9f9f9;
-}
-
-.page-buttons {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.glance-btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;  /* fixed width */
-    height: 35px;  /* fixed height */
-    background: #00796b;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.3s ease-in-out;
-}
-
-.glance-btn:hover {
-    background: #004d40;
-    transform: scale(1.05);
-}
-
-
 footer {
     background-color: #111;
     color: white;
@@ -298,5 +262,6 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 0.9rem;
     color: #555;
 }
+
 
 
