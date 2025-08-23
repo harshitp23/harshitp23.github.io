@@ -189,20 +189,22 @@ footer {
 
 .footer-icons {
     display: flex;
-    gap: 10px;
+    gap: 6px;
 }
 
 .footer-icons img {
-    width: 24px;   /* Small but visible size */
-    height: 24px;
-    object-fit: contain;  /* Prevent distortion */
-    display: block;  /* Remove inline spacing */
-    transition: transform 0.3s;
+    width: 16px;   /* Small but visible size */
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
 .footer-icons img:hover {
     transform: scale(1.2);
 }
+
 
 
 
