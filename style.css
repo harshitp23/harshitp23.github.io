@@ -158,20 +158,27 @@ header {
 }
 
 
-
-/* Footer */
 footer {
-    text-align: center;
-    margin-top: 20px;
-    padding: 15px;
-    background: #222;
-    color: #fff;
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
     font-size: 14px;
 }
-footer a {
-    color: #80cbc4;
-    text-decoration: none;
+
+.footer-left p {
+    margin: 0;
 }
-footer a:hover {
-    text-decoration: underline;
+
+.footer-right a {
+    color: white;
+    margin-left: 15px;
+    font-size: 22px;
+    transition: color 0.3s ease;
+}
+
+.footer-right a:hover {
+    color: #ff4081;
 }
