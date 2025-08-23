@@ -15,13 +15,28 @@ body {
 
 /* Header */
 header {
-    text-align: center;
     background: #222;
     color: #fff;
     padding: 20px;
+}
+
+.logo-title {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;
+    gap: 10px; /* Space between text and image */
+}
+
+.logo {
     font-size: 1.8rem;
     font-weight: 600;
 }
+
+.logo-img {
+    width: 40px; /* Adjust size as needed */
+    height: 40px;
+}
+
 
 /* Hero Section */
 .hero {
