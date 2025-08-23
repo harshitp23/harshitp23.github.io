@@ -193,12 +193,13 @@ footer {
 }
 
 .footer-icons img {
-    width: 24px;  /* Make icons smaller */
-    height: 24px;
+    width: 5px;  /* Make icons smaller */
+    height: 5px;
     transition: transform 0.3s;
 }
 
 .footer-icons img:hover {
     transform: scale(1.2);
 }
+
 
