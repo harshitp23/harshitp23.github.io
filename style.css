@@ -174,37 +174,110 @@ header {
 
 
 footer {
-    background: #222;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
+    background-color: #111;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 30px;
+    font-size: 14px;
 }
 
-.footer-left {
-    font-size: 1rem;
-}
-
-.footer-icons {
-    display: flex;
-    gap: 6px;
-}
-
-.footer-icons img {
-    width: 16px;   /* Small but visible size */
-    height: 16px;
+.footer-left p {
     margin: 0;
-    padding: 0;
-    cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
-.footer-icons img:hover {
-    transform: scale(1.2);
+.footer-right a {
+    color: white;
+    margin-left: 15px;
+    font-size: 22px;
+    transition: color 0.3s ease;
 }
 
+.footer-right a:hover {
+    color: #ff4081;
+}
 
+/* Navigation */
+nav {
+    background: #00796b;
+    padding: 10px 0;
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+nav ul li a:hover, nav ul li a.active {
+    color: #ffeb3b;
+}
 
+/* About Section */
+.about-section {
+    padding: 60px 20px;
+    background: #f4f4f4;
+}
+.about-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+}
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+.about-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+.about-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #00796b;
+}
+.about-text p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+.about-text ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+.about-text ul li {
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+/* About Images */
+.about-images {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.about-images figure {
+    text-align: center;
+}
+.about-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.about-images figcaption {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
 
