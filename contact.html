@@ -1,61 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="hobbies.html">Hobbies</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+    <header>
+        <div class="logo-title">
+            <div class="logo">Harshit's Website</div>
+            <img src="mat.png" alt="Logo" class="header-logo" width="64" height="48">
+        </div>
+    </header>
 
-  <!-- Main Heading -->
-  <h1>Contact Me</h1>
+    <nav class="home-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="hobbies.html">Hobbies</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
 
-  <p>I’m a student at the University of Wisconsin–Madison, currently exploring web development and computer science.</p>
+    <section class="main-content contact-page"> 
 
-  <p>If you’d like to get in touch with me, feel free to send an email:</p>
-  <p><strong>Email:</strong> <a href="mailto:prithiani@wisc.edu">prithiani@wisc.edu</a></p>
+        <h1 class="page-title">Contact Me</h1>
 
-  <!-- UW–Madison Logo -->
-  <figure>
-    <img src="uwmadison.png" alt="University of Wisconsin–Madison Logo" width="300">
-    <figcaption>University of Wisconsin–Madison</figcaption>
-  </figure>
+        <p class="contact-intro">I’m a student at the University of Wisconsin–Madison, currently exploring web development and computer science. Feel free to reach out regarding projects, collaborations, or just to say hello!</p>
 
-  <!-- Instagram -->
-  <figure>
-    <img src="insta.jpg" alt="Instagram logo" width="80">
-    <figcaption>Follow me on Instagram: <strong>@harshatjames</strong></figcaption>
-  </figure>
+        <div class="contact-info-card">
+            <h2>Let's Connect!</h2>
+            <div class="contact-details-item">
+                <p>The best way to reach me is via email:</p>
+                <p class="email-link">
+                    📧 
+                    <a href="mailto:prithiani@wisc.edu">
+                        <strong>prithiani@wisc.edu</strong>
+                    </a>
+                </p>
+            </div>
+        </div>
 
-  <!-- GitHub -->
-  <figure>
-    <img src="github.png" alt="GitHub logo" width="80">
-    <figcaption>See my code projects on <a href="https://github.com/harshitp23" target="_blank">GitHub (@harshitp23)</a></figcaption>
-  </figure>
+        <div class="social-links-grid">
+            
+            <figure class="contact-item">
+                <img src="uwmadison.png" alt="University of Wisconsin–Madison Logo" class="social-img uw-logo">
+                <figcaption>University of Wisconsin–Madison</figcaption>
+            </figure>
 
-  <!-- LinkedIn -->
-  <section>
-    <h2>Connect with me on LinkedIn</h2>
-    <p>
-      Visit my profile here: 
-      <a href="https://www.linkedin.com/in/harshit-prithiani-4a9555313/" target="_blank">
-        linkedin.com/in/harshit-prithiani-4a9555313
-      </a>
-    </p>
-  </section>
+            <figure class="contact-item">
+                <img src="insta.jpg" alt="Instagram logo" class="social-img">
+                <figcaption>Follow me on Instagram: <a href="https://instagram.com/harshatjames" target="_blank"><strong>@harshatjames</strong></a></figcaption>
+            </figure>
+
+            <figure class="contact-item">
+                <img src="github.png" alt="GitHub logo" class="social-img">
+                <figcaption>See my code projects on <a href="https://github.com/harshitp23" target="_blank">GitHub (@harshitp23)</a></figcaption>
+            </figure>
+
+            <div class="contact-item linkedin-card">
+                <h2>Connect on LinkedIn</h2>
+                <p>
+                    <a href="https://www.linkedin.com/in/harshit-prithiani-4a9555313/" target="_blank">
+                        <img src="linkedin.png" alt="LinkedIn logo" class="social-img small-icon">
+                        <span class="linkedin-text">harshit-prithiani-4a9555313</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2025 Harshit</p>
+        <div class="social-icons">
+            <a href="https://instagram.com/harshatjames" target="_blank">
+                <img src="instagram.png" alt="Instagram" width="64" height="64">
+            </a>
+            <a href="https://linkedin.com/in/harshit-prithiani-4a9555313" target="_blank">
+                <img src="linkedin.png" alt="LinkedIn" width="64" height="64">
+            </a>
+            <a href="https://github.com/harshitp23" target="_blank">
+                <img src="github.png" alt="GitHub" width="64" height="64">
+            </a>
+        </div>
+    </footer>
+
 
 </body>
 </html>
-
-
