@@ -4,9 +4,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #e0f7fa, #ffffff);
+    /* Clean, light background gradient */
+    background: linear-gradient(135deg, #e0f7fa, #ffffff); 
     color: #333;
     line-height: 1.6;
     padding: 0;
@@ -24,7 +26,7 @@ header {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center;
-    gap: 10px; /* Space between text and image */
+    gap: 15px; /* Space between text and image */
 }
 
 .logo {
@@ -32,29 +34,93 @@ header {
     font-weight: 600;
 }
 
-.logo-img {
-    width: 40px; /* Adjust size as needed */
+.header-logo {
+    width: 40px; 
     height: 40px;
+}
+
+/* Navigation */
+nav {
+    background: #00796b; /* Teal color */
+    padding: 10px 0;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 30px;
     margin: 0;
     padding: 0;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #fff;
+    color: white;
     font-size: 1rem;
-    transition: color 0.3s;
+    font-weight: 600;
+    padding: 5px 10px;
+    transition: background 0.3s, color 0.3s;
+    border-radius: 4px;
 }
 
 nav ul li a:hover {
-    color: #ff9800; /* Hover effect */
+    color: #ffeb3b; /* Light yellow/orange hover */
 }
+
+nav ul li a.active {
+    background: #004d40; /* Darker teal for active link background */
+    color: #ffeb3b;
+    border-radius: 4px;
+}
+
+/* --- Shared Layout Sections --- */
+
+/* Main Content Wrapper (Used on About, Projects, Hobbies, Contact) */
+.main-content {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px 60px;
+}
+
+.page-title {
+    font-size: 3rem;
+    color: #004d40; /* Darker teal for main title */
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #ff9800; /* Orange underline */
+    padding-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #111;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    font-size: 14px;
+    width: 100%;
+    margin-top: auto; /* Push footer to bottom */
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a img {
+    width: 25px;
+    height: 25px;
+    transition: opacity 0.3s ease;
+}
+
+.social-icons a:hover img {
+    opacity: 0.7;
+}
+
+/* --- Index/Home Page Styling --- */
 
 /* Hero Section */
 .hero {
@@ -63,34 +129,44 @@ nav ul li a:hover {
     background: #00796b;
     color: white;
 }
+
 .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
+
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 20px;
 }
+
 .hero .btn {
     display: inline-block;
     padding: 12px 25px;
-    background: #004d40;
+    background: #ff9800; /* Orange accent */
     color: white;
     text-decoration: none;
     font-weight: 600;
     border-radius: 5px;
     transition: background 0.3s ease;
 }
+
 .hero .btn:hover {
-    background: #00251a;
+    background: #e65100;
 }
 
-/* Intro Section */
+/* Intro Section (Full width background, restricted content width) */
 .intro {
     position: relative;
-    background: url('your-background.png') center/cover no-repeat;
-    padding: 80px 20px;
+    /* You must replace 'your-background.png' with a real image path */
+    background: url('your-background.png') center/cover no-repeat; 
     color: #fff;
+    /* Removed padding here, added it to intro-container instead */
+}
+
+/* New class to apply the max-width/centering to the intro content */
+.intro.main-content-alt {
+    padding: 0; /* Remove padding from the section wrapper */
 }
 
 .intro::before {
@@ -100,20 +176,22 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+    background: rgba(0, 0, 0, 0.5); 
     z-index: 1;
 }
 
 .intro-container {
     position: relative;
-    z-index: 2; /* Bring content above overlay */
+    z-index: 2; 
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 40px;
-    max-width: 1100px;
+    /* This maintains the consistent width */
+    max-width: 1100px; 
     margin: 0 auto;
+    padding: 80px 20px; /* Add the padding back to the container */
 }
 
 .intro-text {
@@ -150,97 +228,61 @@ nav ul li a:hover {
     height: 220px;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px solid #fff;
+    border: 4px solid #ff9800; /* Orange accent border */
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* --- About Page Styling (Updated to use .main-content) --- */
 
-footer {
-    background-color: #111;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    font-size: 14px;
+.about-section-content {
+    background: #f4f4f4; /* Background applied directly to the content wrapper */
+    padding-top: 40px;
+    padding-bottom: 60px;
 }
 
-.footer-left p {
-    margin: 0;
-}
-
-.footer-right a {
-    color: white;
-    margin-left: 15px;
-    font-size: 22px;
-    transition: color 0.3s ease;
-}
-
-.footer-right a:hover {
-    color: #ff4081;
-}
-
-/* Navigation */
-nav {
-    background: #00796b;
-    padding: 10px 0;
-}
-nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 20px;
-}
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-}
-nav ul li a:hover, nav ul li a.active {
-    color: #ffeb3b;
-}
-
-/* About Section */
-.about-section {
-    padding: 60px 20px;
-    background: #f4f4f4;
-}
 .about-container {
-    max-width: 1100px;
+    max-width: 100%; /* Take up the full width of .main-content */
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     align-items: flex-start;
 }
+
 .about-text {
-    flex: 1;
+    flex: 2;
     min-width: 300px;
 }
-.about-text h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
+
 .about-text h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
     color: #00796b;
 }
+
+.about-text h3 {
+    font-size: 1.4rem;
+    color: #ff9800; /* Orange accent */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 .about-text p {
     font-size: 1.1rem;
     margin-bottom: 15px;
 }
+
 .about-text ul {
     margin-top: 10px;
     padding-left: 20px;
+    list-style: disc;
 }
+
 .about-text ul li {
     margin-bottom: 8px;
     font-size: 1.05rem;
 }
 
-/* About Images */
 .about-images {
     flex: 1;
     min-width: 280px;
@@ -248,20 +290,457 @@ nav ul li a:hover, nav ul li a.active {
     flex-direction: column;
     gap: 20px;
 }
+
 .about-images figure {
     text-align: center;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
 .about-img {
     width: 100%;
     max-width: 300px;
-    border-radius: 10px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+
 .about-images figcaption {
     margin-top: 8px;
     font-size: 0.9rem;
     color: #555;
 }
 
+/* --- Projects Page Styling --- */
+
+/* Project Cards (Major Projects) */
+.project-card {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 30px;
+    align-items: center;
+    margin-bottom: 60px;
+    padding: 30px;
+    background: #fcfcfc;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h2 {
+    font-size: 2rem;
+    color: #00796b; 
+    margin-bottom: 15px;
+    width: 100%; 
+}
+
+.project-details {
+    flex: 1;
+    min-width: 300px;
+}
+
+.project-details p {
+    margin-bottom: 15px;
+}
+
+.project-details ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.project-details ul li {
+    background: url('check.svg') no-repeat left center; 
+    background-size: 18px;
+    padding-left: 25px;
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+/* Project Image/Figure */
+.project-figure {
+    flex: 1;
+    min-width: 250px;
+    max-width: 450px; 
+    text-align: center;
+    order: 2; 
+}
+
+.project-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.project-figure figcaption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+}
+
+/* Reverse Layout for alternating style */
+.project-card.reverse-layout .project-details {
+    order: 2;
+}
+.project-card.reverse-layout .project-figure {
+    order: 1; /* Moves image to the left */
+}
 
 
+/* Mini Projects Section (Lower part) */
+.mini-projects {
+    padding-top: 20px;
+}
+
+.mini-projects h2 {
+    font-size: 1.8rem;
+    color: #00796b;
+    border-left: 5px solid #ff9800; /* Orange accent bar */
+    padding-left: 15px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.mini-list {
+    list-style: disc;
+    padding-left: 40px;
+    margin-bottom: 30px;
+}
+
+.mini-list li {
+    margin-bottom: 5px;
+}
+
+/* Separator Line */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #00796b, rgba(0, 0, 0, 0));
+    margin: 40px 0;
+}
+
+/* --- Hobbies Page Styling --- */
+
+.hobbies-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-size: 1.15rem;
+    color: #555;
+}
+
+/* Hobby Card Structure */
+.hobby-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.hobby-card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.hobby-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hobby-text h2 {
+    font-size: 2.2rem;
+    color: #00796b; 
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff9800; 
+    padding-bottom: 5px;
+}
+
+.hobby-text ul {
+    margin-top: 15px;
+    padding-left: 25px;
+    list-style: square; 
+}
+
+.hobby-text ul li {
+    margin-bottom: 5px;
+}
+
+/* Hobby Images */
+.hobby-figure {
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.hobby-img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hobby-figure figcaption {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+}
+
+/* Reverse Layout */
+.hobby-card.reverse-layout .hobby-text {
+    order: 2;
+}
+.hobby-card.reverse-layout .hobby-figure {
+    order: 1;
+}
+
+/* Image Group for Video Games */
+.hobby-images-group {
+    display: flex;
+    gap: 15px;
+    flex: 1;
+    min-width: 250px;
+    max-width: 400px;
+}
+.hobby-images-group .group-img {
+    width: 50%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Coding Hobby (Full Width Text) */
+.hobby-card.coding-hobby {
+    justify-content: center;
+    background: #e0f7fa; 
+}
+.hobby-card.coding-hobby .full-width {
+    flex: none;
+    max-width: 800px;
+    text-align: center;
+}
+.hobby-card.coding-hobby h2 {
+    border-bottom: none;
+}
+
+/* --- Contact Page Styling --- */
+
+.contact-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+/* Main Contact Card (Email) */
+.contact-info-card {
+    max-width: 600px;
+    margin: 0 auto 50px;
+    padding: 30px;
+    background: #e0f7fa; 
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 121, 107, 0.1); 
+}
+
+.contact-info-card h2 {
+    font-size: 2rem;
+    color: #00796b;
+    margin-bottom: 20px;
+}
+
+.email-link {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.email-link a {
+    color: #ff9800; 
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.email-link a:hover {
+    color: #e65100; 
+    text-decoration: underline;
+}
+
+/* Social Links Grid */
+.social-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.social-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.uw-logo {
+    width: 100px; 
+    height: auto;
+}
+
+.contact-item figcaption, .linkedin-text {
+    font-size: 0.95rem;
+    color: #555;
+    word-break: break-word; 
+}
+
+/* LinkedIn Card Specifics */
+.linkedin-card {
+    padding: 30px 20px; 
+}
+
+.linkedin-card h2 {
+    font-size: 1.4rem;
+    color: #00796b;
+    margin-bottom: 10px;
+}
+
+.linkedin-card a {
+    text-decoration: none;
+    color: #00796b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.linkedin-card a:hover {
+    color: #ff9800;
+}
+
+.linkedin-card .small-icon {
+    width: 25px;
+    height: 25px;
+    margin: 0;
+}
+
+/* --- Media Queries (Responsiveness) --- */
+
+@media (max-width: 900px) {
+    /* Adjustments for medium screens (tablets) */
+    .intro-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Projects Page Adjustments */
+    .project-card, .project-card.reverse-layout {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .project-figure, .project-details {
+        min-width: auto;
+        order: initial !important; 
+    }
+    
+    .project-details ul {
+        text-align: left; 
+    }
+
+    /* Hobbies Page Adjustments */
+    .hobby-card, .hobby-card.reverse-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hobby-text h2, .hobbies-intro {
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .hobby-figure, .hobby-text {
+        min-width: 100%;
+        order: initial !important; 
+    }
+    .hobby-text ul {
+        text-align: left;
+    }
+    .hobby-images-group {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: none;
+    }
+    .hobby-images-group .group-img {
+        width: 80%; /* Make images a little wider on mobile */
+    }
+}
+
+@media (max-width: 600px) {
+    /* General Mobile Adjustments */
+    .logo-title .logo {
+        font-size: 1.5rem;
+    }
+    nav ul {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .hero h1, .page-title {
+        font-size: 2rem;
+    }
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    /* Contact Page Adjustments */
+    .social-links-grid {
+        grid-template-columns: 1fr; 
+    }
+}
