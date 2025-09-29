@@ -1,66 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Hobbies</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobbies</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="hobbies.html">Hobbies</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+    <header>
+        <div class="logo-title">
+            <div class="logo">Harshit's Website</div>
+            <img src="mat.png" alt="Logo" class="header-logo" width="64" height="48">
+        </div>
+    </header>
 
-  <!-- Main Heading -->
-  <h1>My Hobbies</h1>
+    <nav class="home-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="hobbies.html" class="active">Hobbies</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-  <p>In my free time, I enjoy staying active, being creative, and challenging my mind. Below are some of my favorite hobbies and how I spend time outside of academics.</p>
+    <section class="main-content hobbies-page"> 
 
-  <!-- Section 1: Sports -->
-  <h2>🏀 Sports & Physical Activity</h2>
-  <p>I love playing sports to stay active and have fun with friends. My favorite sports are:</p>
-  <ul>
-    <li>Basketball – I enjoy playing casual pickup games at the court.</li>
-    <li>Badminton – It's fun, fast-paced, and great for reflexes and strategy.</li>
-  </ul>
-  <figure>
-  <img src="basketball.jpg" alt="Playing basketball on an outdoor court" width="400">
-  <figcaption> A picture of me playing Basketball.</figcaption>
-  </figure>
+        <h1 class="page-title">My Hobbies</h1>
 
-  <!-- Section 2: Drawing -->
-  <h2>🎨 Drawing</h2>
-  <p>Drawing is one of my favorite creative outlets. I often sketch characters or abstract art to relax and express myself visually.</p>
-  <figure>
-  <img src="drawing.jpeg" alt="Example of my drawing artwork" width="400">
-  <figcaption> Another one of my drawings.</figcaption>
-  </figure>
+        <p class="hobbies-intro">In my free time, I enjoy staying active, being creative, and challenging my mind. Below are some of my favorite hobbies and how I spend time outside of academics.</p>
 
-  <!-- Section 3: Video Games -->
-  <h2>🎮 Video Games</h2>
-  <p>Gaming is both a hobby and a way to connect with friends. Some of my favorite games include:</p>
-  <ul>
-    <li>GTA V</li>
-    <li>FIFA</li>
-    <li>NBA 2K</li>
-    <li>Valorant</li>
-    <li>Battlefield 2042</li>
-  </ul>
-  <img src="fifa.jpg" alt="Fifa 24." width="400">
-  <img src="nba.jpg" alt="NBA 2K24." width="400">
+        <article class="hobby-card">
+            <div class="hobby-text">
+                <h2>🏀 Sports & Physical Activity</h2>
+                <p>I love playing sports to stay active and have fun with friends. My favorite sports are:</p>
+                <ul>
+                    <li><strong>Basketball</strong> – I enjoy playing casual pickup games at the court.</li>
+                    <li><strong>Badminton</strong> – It's fun, fast-paced, and great for reflexes and strategy.</li>
+                </ul>
+            </div>
+            <figure class="hobby-figure">
+                <img src="basketball.jpg" alt="Playing basketball on an outdoor court" class="hobby-img">
+                <figcaption>A picture of me playing Basketball.</figcaption>
+            </figure>
+        </article>
 
-  <!-- Section 4: Coding -->
-  <h2>💻 Coding for Fun</h2>
-  <p>Even outside of class, I enjoy coding mini projects to challenge myself. And solve problems on leetcode daily. It helps me stay sharp and learn new programming techniques. Sometimes I build tools, solve coding puzzles, or try out new libraries and frameworks.</p>
+        <article class="hobby-card reverse-layout">
+            <div class="hobby-text">
+                <h2>🎨 Drawing</h2>
+                <p>Drawing is one of my favorite creative outlets. I often sketch characters or abstract art to relax and express myself visually. It's a great way to balance the logical demands of coding with artistic expression.</p>
+            </div>
+            <figure class="hobby-figure">
+                <img src="drawing.jpeg" alt="Example of my drawing artwork" class="hobby-img">
+                <figcaption>Another one of my drawings.</figcaption>
+            </figure>
+        </article>
+
+        <article class="hobby-card">
+            <div class="hobby-text">
+                <h2>🎮 Video Games</h2>
+                <p>Gaming is both a hobby and a way to connect with friends, offering a fun challenge and competitive spirit. Some of my favorite games include:</p>
+                <ul class="game-list">
+                    <li>GTA V</li>
+                    <li>FIFA</li>
+                    <li>NBA 2K</li>
+                    <li>Valorant</li>
+                    <li>Battlefield 2042</li>
+                </ul>
+            </div>
+            <div class="hobby-images-group">
+                <img src="fifa.jpg" alt="Fifa 24." class="group-img">
+                <img src="nba.jpg" alt="NBA 2K24." class="group-img">
+            </div>
+        </article>
+
+        <article class="hobby-card coding-hobby">
+            <div class="hobby-text full-width">
+                <h2>💻 Coding for Fun</h2>
+                <p>Even outside of class, I enjoy coding mini projects to challenge myself. And solve problems on leetcode daily. It helps me stay sharp and learn new programming techniques. Sometimes I build tools, solve coding puzzles, or try out new libraries and frameworks.</p>
+            </div>
+        </article>
+
+    </section>
+    
+    <footer>
+        <p>© 2025 Harshit</p>
+        <div class="social-icons">
+            <a href="https://instagram.com/harshatjames" target="_blank">
+                <img src="instagram.png" alt="Instagram" width="64" height="64">
+            </a>
+            <a href="https://linkedin.com/in/harshit-prithiani-4a9555313" target="_blank">
+                <img src="linkedin.png" alt="LinkedIn" width="64" height="64">
+            </a>
+            <a href="https://github.com/harshitp23" target="_blank">
+                <img src="github.png" alt="GitHub" width="64" height="64">
+            </a>
+        </div>
+    </footer>
 
 
 </body>
-
 </html>
