@@ -12,79 +12,208 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-body: #444; --bg-hero: #00796b; --bg-header: #000; --text-hero: #ffffff; --text-main: #ffffff; --accent: #ff9800; --btn-bg: var(--accent); --btn-text: #ffffff; --card-bg: rgba(255, 255, 255, 0.1); --dropdown-bg: #111b2d; }
-        [data-theme="dark"] { --bg-body: #121212; --bg-hero: #1a1a1a; --bg-header: #000; --text-main: #e0e0e0; --accent: #bb86fc; --btn-bg: var(--accent); }
-        [data-theme="badger"] { --bg-body: #f4f4f4; --bg-hero: #c5050c; --bg-header: #282828; --text-main: #282828; --accent: #c5050c; --btn-bg: #000000; --btn-text: #ffffff; }
-        [data-theme="ocean"] { --bg-body: #001219; --bg-hero: #005f73; --bg-header: #001219; --text-main: #e9d8a6; --accent: #94d2bd; --btn-bg: var(--accent); }
+        /* --- Theme Variables --- */
+        :root {
+            --bg-body: #444; --bg-hero: #00796b; --bg-header: #000;
+            --text-hero: #ffffff; --text-main: #ffffff; --accent: #ff9800;
+            --btn-bg: var(--accent); --btn-text: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.1); --dropdown-bg: #111b2d;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #121212; --bg-hero: #1a1a1a; --bg-header: #000;
+            --text-main: #e0e0e0; --accent: #bb86fc; --btn-bg: var(--accent);
+        }
+
+        [data-theme="badger"] {
+            --bg-body: #f4f4f4; --bg-hero: #c5050c; --bg-header: #282828;
+            --text-main: #282828; --accent: #c5050c;
+            --btn-bg: #000000; --btn-text: #ffffff;
+        }
+
+        [data-theme="ocean"] {
+            --bg-body: #001219; --bg-hero: #005f73; --bg-header: #001219;
+            --text-main: #e9d8a6; --accent: #94d2bd; --btn-bg: var(--accent);
+        }
+
+        /* --- Global Layout --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; background-color: var(--bg-body); }
-        body { font-family: 'Poppins', sans-serif; color: var(--text-main); display: flex; flex-direction: column; animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s ease;
+        }
+
+        /* --- Header & Navigation --- */
         header { background: var(--bg-header); padding: 20px 0; text-align: center; position: relative; }
         .logo-text { font-size: 1.6rem; font-weight: 700; color: white; display: block; margin-bottom: 10px; }
         nav { display: flex; justify-content: center; gap: 25px; }
         nav a { color: #ccc; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
         nav a:hover, nav a.active { color: var(--accent); }
+
+        /* --- Theme Selector UI --- */
         .theme-container { position: absolute; right: 30px; top: 25px; }
         .palette-btn { background: #1e293b; border: 1px solid #334155; padding: 10px; border-radius: 10px; cursor: pointer; font-size: 1.2rem; }
-        .theme-dropdown { position: absolute; top: 55px; right: 0; width: 220px; background: var(--dropdown-bg); border-radius: 12px; padding: 10px; display: none; flex-direction: column; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+        .theme-dropdown {
+            position: absolute; top: 55px; right: 0; width: 220px; background: var(--dropdown-bg);
+            border-radius: 12px; padding: 10px; display: none; flex-direction: column; z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+        }
         .theme-dropdown.show { display: flex; }
+        .theme-label { font-size: 0.75rem; color: #64748b; padding: 5px 10px; font-weight: 800; }
         .theme-opt { display: flex; align-items: center; justify-content: space-between; padding: 12px 10px; border-radius: 8px; cursor: pointer; color: white; }
-        .radio-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #334155; }
+        .theme-opt:hover { background: rgba(255,255,255,0.05); }
+        .radio-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #334155; transition: 0.2s; }
         .theme-opt.active .radio-dot { background: var(--accent); border-color: var(--accent); box-shadow: inset 0 0 0 3px var(--dropdown-bg); }
+
+        /* --- Content Sections --- */
         main { flex: 1; }
         .hero { background-color: var(--bg-hero); padding: 60px 20px; text-align: center; color: var(--text-hero); }
         .hero h1 { font-size: 3rem; }
-        .about-container { max-width: 1100px; margin: 60px auto; display: flex; gap: 50px; padding: 0 40px; align-items: flex-start; }
-        .about-text { flex: 1.5; background: var(--card-bg); padding: 40px; border-radius: 25px; backdrop-filter: blur(12px); }
-        .btn-action { background: var(--btn-bg); color: var(--btn-text); padding: 15px 35px; text-decoration: none; border-radius: 8px; font-weight: 700; display: inline-block; margin-top: 20px; }
+
+        .about-container { 
+            max-width: 1100px; margin: 60px auto; 
+            display: flex; gap: 50px; padding: 0 40px; align-items: flex-start;
+        }
+        
+        .about-text { flex: 1.5; background: var(--card-bg); padding: 40px; border-radius: 25px; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        
+        /* Updated spacing rule for paragraphs */
+        .about-text p { 
+            margin-bottom: 25px; 
+            line-height: 1.8; 
+            font-size: 1.1rem; 
+        }
+        
+        .about-text h3 { margin: 25px 0 15px; color: var(--accent); }
+        .about-text ul { list-style: none; margin-bottom: 30px; }
+        .about-text ul li { margin-bottom: 10px; padding-left: 20px; position: relative; font-size: 1.05rem; }
+        .about-text ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+
+        .btn-action { 
+            background: var(--btn-bg); 
+            color: var(--btn-text); 
+            padding: 15px 35px; 
+            text-decoration: none; border-radius: 8px; font-weight: 700; 
+            transition: transform 0.2s, background 0.3s ease; 
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .btn-action:hover { transform: translateY(-3px); }
+
         .about-images { flex: 1; display: flex; flex-direction: column; gap: 25px; }
+        .about-images figure { background: var(--card-bg); padding: 15px; border-radius: 15px; text-align: center; }
         .about-img { width: 100%; border-radius: 10px; object-fit: cover; height: 200px; border: 3px solid var(--accent); }
+        figcaption { margin-top: 10px; font-size: 0.85rem; opacity: 0.8; }
+
         footer { background: #000; color: #888; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
+        .socials { display: flex; gap: 20px; }
+        .socials img { width: 24px; filter: grayscale(1) brightness(1.5); }
+
+        @media (max-width: 900px) {
+            .about-container { flex-direction: column; text-align: center; }
+            .about-text ul li { text-align: left; }
+            .about-images { width: 100%; }
+        }
     </style>
 </head>
 <body>
+
     <header>
         <span class="logo-text">Harshit's Website</span>
-        <nav><a href="index.html">Home</a><a href="about.html" class="active">About</a><a href="projects.html">Projects</a><a href="hobbies.html">Hobbies</a><a href="contact.html">Contact</a></nav>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="hobbies.html">Hobbies</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
         <div class="theme-container">
             <button class="palette-btn" onclick="toggleThemeMenu()">🎨</button>
             <div class="theme-dropdown" id="themeMenu">
                 <div class="theme-label">THEME</div>
-                <div class="theme-opt" id="opt-dark" onclick="setTheme('dark')"><span>🌙 Dark</span><div class="radio-dot"></div></div>
-                <div class="theme-opt" id="opt-light" onclick="setTheme('light')"><span>☀️ Light</span><div class="radio-dot"></div></div>
-                <div class="theme-opt" id="opt-badger" onclick="setTheme('badger')"><span>🦡 Badger</span><div class="radio-dot"></div></div>
-                <div class="theme-opt" id="opt-ocean" onclick="setTheme('ocean')"><span>🌊 Ocean</span><div class="radio-dot"></div></div>
+                <div class="theme-opt" id="opt-dark" onclick="setTheme('dark')">
+                    <span>🌙 Dark</span> <div class="radio-dot"></div>
+                </div>
+                <div class="theme-opt" id="opt-light" onclick="setTheme('light')">
+                    <span>☀️ Light</span> <div class="radio-dot"></div>
+                </div>
+                <div class="theme-opt" id="opt-badger" onclick="setTheme('badger')">
+                    <span>🦡 Badger</span> <div class="radio-dot"></div>
+                </div>
+                <div class="theme-opt" id="opt-ocean" onclick="setTheme('ocean')">
+                    <span>🌊 Ocean</span> <div class="radio-dot"></div>
+                </div>
             </div>
         </div>
     </header>
+
     <main>
-        <section class="hero"><h1>About Me</h1></section>
+        <section class="hero">
+            <h1>About Me</h1>
+        </section>
+
         <div class="about-container">
             <div class="about-text">
                 <p>I’m a Computer Science student at the University of Wisconsin–Madison with a strong interest in full-stack development. I enjoy building complete applications—from designing how the system works behind the scenes to creating clean, user-friendly interfaces people actually enjoy using. For me, software isn’t just about writing code; it’s about solving real problems and turning ideas into tools that are practical, reliable, and easy to interact with.</p>
 
                 <p>While I’ve developed a solid foundation in backend systems, I don’t want to focus on just one side of development. I want to grow as a full-stack engineer who understands how every part of an application connects and works together. I enjoy thinking about both logic and user experience—making sure an application is efficient, secure, and also intuitive. My goal is to keep building meaningful projects that challenge me to learn, improve, and create well-rounded solutions from start to finish.</p>
+
                 <a href="hobbies.html" class="btn-action">Checkout My Hobbies</a>
             </div>
+
             <div class="about-images">
-                <img src="compsci.jpg" alt="CS" class="about-img">
-                <img src="self.png" alt="Self" class="about-img">
-                <img src="videogames.jpg" alt="Games" class="about-img">
+                <figure>
+                    <img src="compsci.jpg" alt="Computer Science" class="about-img">
+                    <figcaption>My interest in technology and coding.</figcaption>
+                </figure>
+                <figure>
+                    <img src="self.png" alt="Self Portrait" class="about-img">
+                    <figcaption>A self-portrait showing my creative side.</figcaption>
+                </figure>
+                <figure>
+                    <img src="videogames.jpg" alt="Video Games" class="about-img">
+                    <figcaption>Gaming is one of my favorite hobbies.</figcaption>
+                </figure>
             </div>
         </div>
     </main>
-    <footer><p>© 2026 Harshit Prithiani</p></footer>
+
+    <footer>
+        <p>© 2026 Harshit Prithiani</p>
+        <div class="socials">
+            <a href="https://instagram.com/harshatjames" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+            <a href="https://linkedin.com/in/harshit-prithiani-4a9555313" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
+            <a href="https://github.com/harshitp23" target="_blank"><img src="github.png" alt="GitHub"></a>
+        </div>
+    </footer>
+
     <script>
         function toggleThemeMenu() { document.getElementById('themeMenu').classList.toggle('show'); }
+
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
             document.getElementById('themeMenu').classList.remove('show');
             document.querySelectorAll('.theme-opt').forEach(opt => opt.classList.remove('active'));
-            document.getElementById('opt-' + theme).classList.add('active');
+            const targetOpt = document.getElementById('opt-' + theme);
+            if(targetOpt) targetOpt.classList.add('active');
         }
-        window.onload = () => setTheme(localStorage.getItem('theme') || 'light');
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.palette-btn')) {
+                var dropdowns = document.getElementsByClassName("theme-dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    if (dropdowns[i].classList.contains('show')) dropdowns[i].classList.remove('show');
+                }
+            }
+        }
+
+        window.onload = () => { setTheme(localStorage.getItem('theme') || 'light'); }
     </script>
 </body>
 </html>
