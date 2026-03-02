@@ -39,19 +39,18 @@
         /* --- Global Layout --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Flash Guard: Force background immediately */
-        html, body {
-            height: 100%; 
-            background-color: var(--bg-body);
+        html {
+            height: 100%;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-body);
             color: var(--text-main);
             display: flex;
             flex-direction: column;
+            min-height: 100vh; /* Ensures the body is at least full screen height */
             transition: background 0.3s ease;
-            /* Animation removed for instant change */
         }
 
         /* --- Header & Navigation --- */
@@ -77,7 +76,10 @@
         .theme-opt.active .radio-dot { background: var(--accent); border-color: var(--accent); box-shadow: inset 0 0 0 3px var(--dropdown-bg); }
 
         /* --- Content Sections --- */
-        main { flex: 1; padding-bottom: 60px; }
+        main { 
+            flex: 1; 
+            padding-bottom: 80px; /* Extra padding so last card doesn't hit the footer */
+        }
         .hero { background-color: var(--bg-hero); padding: 60px 20px; text-align: center; color: var(--text-hero); margin-bottom: 40px; }
         .hero h1 { font-size: 3rem; }
 
@@ -105,7 +107,16 @@
         .group-img { width: 45%; border-radius: 10px; border: 2px solid var(--accent); }
         figcaption { margin-top: 10px; font-size: 0.85rem; opacity: 0.8; font-style: italic; }
 
-        footer { background: #000; color: #888; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
+        /* --- Footer --- */
+        footer { 
+            background: #000; 
+            color: #888; 
+            padding: 30px 50px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            width: 100%;
+        }
         .socials { display: flex; gap: 20px; }
         .socials img { width: 24px; filter: grayscale(1) brightness(1.5); transition: 0.3s; }
         .socials img:hover { filter: none; }
@@ -189,7 +200,7 @@
             <article class="hobby-card">
                 <div class="hobby-text">
                     <h2>🎨 Drawing</h2>
-                    <p>Drawing is my creative outlet. I often sketch characters or abstract art as a way to relax and balance the logic-heavy work of computer science with artistic expression.</p>
+                    <p>Drawing is my creative outlet. I often sketch characters or abstract art as a way to relax and balance logic with artistic expression.</p>
                 </div>
                 <div class="hobby-visual">
                     <img src="drawing.jpeg" alt="My artwork" class="hobby-img">
@@ -202,7 +213,7 @@
                     <p>Gaming allows me to connect with friends and enjoy competitive challenges. My favorite titles include:</p>
                     <ul>
                         <li>FIFA & NBA 2K (Sports Simulators)</li>
-                        <li>Valorant & Battlefield 2042 (First-Person Shooters)</li>
+                        <li>Valorant & Battlefield 2042</li>
                         <li>GTA V</li>
                     </ul>
                 </div>
@@ -243,7 +254,8 @@
             localStorage.setItem('theme', theme);
             document.getElementById('themeMenu').classList.remove('show');
             document.querySelectorAll('.theme-opt').forEach(opt => opt.classList.remove('active'));
-            document.getElementById('opt-' + theme).classList.add('active');
+            const btn = document.getElementById('opt-' + theme);
+            if(btn) btn.classList.add('active');
         }
 
         window.onclick = function(event) {
