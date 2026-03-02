@@ -39,7 +39,7 @@
         /* --- Global Layout --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* 2. Flash Guard: Force background immediately */
+        /* Flash Guard: Force background immediately */
         html, body {
             height: 100%; 
             background-color: var(--bg-body);
@@ -51,11 +51,8 @@
             display: flex;
             flex-direction: column;
             transition: background 0.3s ease;
-            /* 3. Smooth Fade-in Transition */
-            animation: fadeIn 0.4s ease-in-out;
+            /* Animation removed for instant change */
         }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* --- Header & Navigation --- */
         header { background: var(--bg-header); padding: 20px 0; text-align: center; position: relative; }
@@ -110,7 +107,8 @@
 
         footer { background: #000; color: #888; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
         .socials { display: flex; gap: 20px; }
-        .socials img { width: 24px; filter: grayscale(1) brightness(1.5); }
+        .socials img { width: 24px; filter: grayscale(1) brightness(1.5); transition: 0.3s; }
+        .socials img:hover { filter: none; }
 
         @media (max-width: 900px) {
             .hobby-card, .hobby-card.reverse { flex-direction: column; text-align: center; }
