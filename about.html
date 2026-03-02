@@ -24,35 +24,29 @@
         .logo-text { font-size: 1.6rem; font-weight: 700; color: white; display: block; margin-bottom: 10px; }
         nav { display: flex; justify-content: center; gap: 25px; }
         nav a { color: #ccc; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
-        nav a.active { color: var(--accent); }
+        nav a:hover, nav a.active { color: var(--accent); }
         .theme-container { position: absolute; right: 30px; top: 25px; }
         .palette-btn { background: #1e293b; border: 1px solid #334155; padding: 10px; border-radius: 10px; cursor: pointer; font-size: 1.2rem; }
         .theme-dropdown { position: absolute; top: 55px; right: 0; width: 220px; background: var(--dropdown-bg); border-radius: 12px; padding: 10px; display: none; flex-direction: column; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
         .theme-dropdown.show { display: flex; }
         .theme-opt { display: flex; align-items: center; justify-content: space-between; padding: 12px 10px; border-radius: 8px; cursor: pointer; color: white; }
-        .radio-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #334155; transition: 0.2s; }
+        .radio-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #334155; }
         .theme-opt.active .radio-dot { background: var(--accent); border-color: var(--accent); box-shadow: inset 0 0 0 3px var(--dropdown-bg); }
         main { flex: 1; }
         .hero { background-color: var(--bg-hero); padding: 60px 20px; text-align: center; color: var(--text-hero); }
+        .hero h1 { font-size: 3rem; }
         .about-container { max-width: 1100px; margin: 60px auto; display: flex; gap: 50px; padding: 0 40px; align-items: flex-start; }
         .about-text { flex: 1.5; background: var(--card-bg); padding: 40px; border-radius: 25px; backdrop-filter: blur(12px); }
         .btn-action { background: var(--btn-bg); color: var(--btn-text); padding: 15px 35px; text-decoration: none; border-radius: 8px; font-weight: 700; display: inline-block; margin-top: 20px; }
         .about-images { flex: 1; display: flex; flex-direction: column; gap: 25px; }
-        .about-img { width: 100%; border-radius: 10px; height: 200px; object-fit: cover; border: 3px solid var(--accent); }
+        .about-img { width: 100%; border-radius: 10px; object-fit: cover; height: 200px; border: 3px solid var(--accent); }
         footer { background: #000; color: #888; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        @media (max-width: 900px) { .about-container { flex-direction: column; text-align: center; } .about-images { width: 100%; } }
     </style>
 </head>
 <body>
     <header>
         <span class="logo-text">Harshit's Website</span>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html" class="active">About</a>
-            <a href="projects.html">Projects</a>
-            <a href="hobbies.html">Hobbies</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+        <nav><a href="index.html">Home</a><a href="about.html" class="active">About</a><a href="projects.html">Projects</a><a href="hobbies.html">Hobbies</a><a href="contact.html">Contact</a></nav>
         <div class="theme-container">
             <button class="palette-btn" onclick="toggleThemeMenu()">🎨</button>
             <div class="theme-dropdown" id="themeMenu">
@@ -68,8 +62,9 @@
         <section class="hero"><h1>About Me</h1></section>
         <div class="about-container">
             <div class="about-text">
-                <p>I’m a Computer Science student at UW–Madison focused on backend and full-stack development. I enjoy building systems like GradeCalc Sync Pro and logic-based tools that solve practical academic and sports problems.</p>
-                <p>I'm dedicated to clean architecture and modern practices, constantly seeking software engineering roles where I can grow and contribute to impactful projects.</p>
+                <p>I’m a Computer Science student at the University of Wisconsin–Madison with a strong interest in full-stack development. I enjoy building complete applications—from designing how the system works behind the scenes to creating clean, user-friendly interfaces people actually enjoy using. For me, software isn’t just about writing code; it’s about solving real problems and turning ideas into tools that are practical, reliable, and easy to interact with.</p>
+
+                <p>While I’ve developed a solid foundation in backend systems, I don’t want to focus on just one side of development. I want to grow as a full-stack engineer who understands how every part of an application connects and works together. I enjoy thinking about both logic and user experience—making sure an application is efficient, secure, and also intuitive. My goal is to keep building meaningful projects that challenge me to learn, improve, and create well-rounded solutions from start to finish.</p>
                 <a href="hobbies.html" class="btn-action">Checkout My Hobbies</a>
             </div>
             <div class="about-images">
