@@ -3,112 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects | Harshit's Website</title>
+    <title>Projects | Harshit's Website</title>
+    <script>
+        (function() {
+            const saved = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- Theme Variables --- */
-        :root {
-            --bg-body: #444; --bg-hero: #00796b; --bg-header: #000;
-            --text-hero: #ffffff; --text-main: #ffffff; --accent: #ff9800;
-            --btn-bg: var(--accent); --btn-text: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.1); --dropdown-bg: #111b2d;
-        }
-
-        [data-theme="dark"] {
-            --bg-body: #121212; --bg-hero: #1a1a1a; --bg-header: #000;
-            --text-main: #e0e0e0; --accent: #bb86fc; --btn-bg: var(--accent);
-        }
-
-        [data-theme="badger"] {
-            --bg-body: #f4f4f4; --bg-hero: #c5050c; --bg-header: #282828;
-            --text-main: #282828; --accent: #c5050c;
-            --btn-bg: #000000; --btn-text: #ffffff;
-        }
-
-        [data-theme="ocean"] {
-            --bg-body: #001219; --bg-hero: #005f73; --bg-header: #001219;
-            --text-main: #e9d8a6; --accent: #94d2bd; --btn-bg: var(--accent);
-        }
-
-        /* --- Global Layout --- */
+        :root { --bg-body: #444; --bg-hero: #00796b; --bg-header: #000; --text-main: #ffffff; --accent: #ff9800; --card-bg: rgba(255, 255, 255, 0.1); --dropdown-bg: #111b2d; }
+        [data-theme="dark"] { --bg-body: #121212; --bg-hero: #1a1a1a; --text-main: #e0e0e0; --accent: #bb86fc; }
+        [data-theme="badger"] { --bg-body: #f4f4f4; --bg-hero: #c5050c; --bg-header: #282828; --text-main: #282828; --accent: #c5050c; }
+        [data-theme="ocean"] { --bg-body: #001219; --bg-hero: #005f73; --bg-header: #001219; --text-main: #e9d8a6; --accent: #94d2bd; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { min-height: 100%; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            display: flex;
-            flex-direction: column;
-            transition: background 0.3s ease;
-        }
-
-        /* --- Header & Navigation --- */
+        html, body { min-height: 100%; background-color: var(--bg-body); }
+        body { font-family: 'Poppins', sans-serif; color: var(--text-main); display: flex; flex-direction: column; animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         header { background: var(--bg-header); padding: 20px 0; text-align: center; position: relative; }
         .logo-text { font-size: 1.6rem; font-weight: 700; color: white; display: block; margin-bottom: 10px; }
         nav { display: flex; justify-content: center; gap: 25px; }
         nav a { color: #ccc; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
-        nav a:hover, nav a.active { color: var(--accent); }
-
-        /* --- Theme Selector --- */
+        nav a.active { color: var(--accent); }
         .theme-container { position: absolute; right: 30px; top: 25px; }
         .palette-btn { background: #1e293b; border: 1px solid #334155; padding: 10px; border-radius: 10px; cursor: pointer; font-size: 1.2rem; }
-        .theme-dropdown {
-            position: absolute; top: 55px; right: 0; width: 220px; background: var(--dropdown-bg);
-            border-radius: 12px; padding: 10px; display: none; flex-direction: column; z-index: 100;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
-        }
+        .theme-dropdown { position: absolute; top: 55px; right: 0; width: 220px; background: var(--dropdown-bg); border-radius: 12px; padding: 10px; display: none; flex-direction: column; z-index: 100; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .theme-dropdown.show { display: flex; }
-        .theme-label { font-size: 0.75rem; color: #64748b; padding: 5px 10px; font-weight: 800; }
         .theme-opt { display: flex; align-items: center; justify-content: space-between; padding: 12px 10px; border-radius: 8px; cursor: pointer; color: white; }
-        .theme-opt:hover { background: rgba(255,255,255,0.05); }
         .radio-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #334155; transition: 0.2s; }
         .theme-opt.active .radio-dot { background: var(--accent); border-color: var(--accent); box-shadow: inset 0 0 0 3px var(--dropdown-bg); }
-
-        /* --- Content Sections --- */
         main { flex: 1; padding-bottom: 60px; }
-        .hero { background-color: var(--bg-hero); padding: 60px 20px; text-align: center; color: var(--text-hero); margin-bottom: 40px; }
-        .hero h1 { font-size: 3rem; }
-
+        .hero { background-color: var(--bg-hero); padding: 60px 20px; text-align: center; color: #fff; margin-bottom: 40px; }
         .projects-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        .project-card {
-            display: flex; gap: 40px; background: var(--card-bg); 
-            padding: 40px; border-radius: 25px; backdrop-filter: blur(12px);
-            margin-bottom: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            align-items: center;
-        }
+        .project-card { display: flex; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 25px; margin-bottom: 50px; align-items: center; }
         .project-card.reverse { flex-direction: row-reverse; }
-
         .project-info { flex: 1.5; }
         .project-info h2 { font-size: 1.8rem; margin-bottom: 15px; color: var(--accent); }
-        .project-info p { margin-bottom: 15px; line-height: 1.6; font-size: 1rem; }
-        .project-info ul { list-style: none; margin-bottom: 20px; }
-        .project-info ul li { margin-bottom: 8px; padding-left: 20px; position: relative; font-size: 0.95rem; }
-        .project-info ul li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
-        
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .tech-tags span { background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; border: 1px solid var(--accent); }
-
-        .project-visual { flex: 1; text-align: center; }
-        .project-img { width: 100%; max-width: 350px; border-radius: 15px; border: 4px solid var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-        .award-badge { background: #ffd700; color: #000; display: inline-block; padding: 5px 15px; border-radius: 5px; font-weight: 800; margin-top: 15px; font-size: 0.9rem; }
-
-        .mini-projects { margin-top: 60px; background: var(--card-bg); padding: 40px; border-radius: 25px; }
-        .mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 20px; }
-        .mini-item h4 { color: var(--accent); margin-bottom: 10px; }
-
+        .tech-tags span { background: rgba(255,255,255,0.1); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid var(--accent); margin-right: 5px; }
+        .project-img { width: 100%; max-width: 350px; border-radius: 15px; border: 4px solid var(--accent); }
+        .award-badge { background: #ffd700; color: #000; padding: 5px 15px; border-radius: 5px; font-weight: 800; margin-top: 15px; display: inline-block; }
         footer { background: #000; color: #888; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .socials { display: flex; gap: 20px; }
-        .socials img { width: 24px; filter: grayscale(1) brightness(1.5); }
-
-        @media (max-width: 900px) {
-            .project-card, .project-card.reverse { flex-direction: column; text-align: center; }
-            .project-info ul li { text-align: left; }
-        }
+        @media (max-width: 900px) { .project-card, .project-card.reverse { flex-direction: column; text-align: center; } }
     </style>
 </head>
 <body>
-
     <header>
         <span class="logo-text">Harshit's Website</span>
         <nav>
@@ -118,133 +56,50 @@
             <a href="hobbies.html">Hobbies</a>
             <a href="contact.html">Contact</a>
         </nav>
-
         <div class="theme-container">
             <button class="palette-btn" onclick="toggleThemeMenu()">🎨</button>
             <div class="theme-dropdown" id="themeMenu">
                 <div class="theme-label">THEME</div>
-                <div class="theme-opt" id="opt-dark" onclick="setTheme('dark')">
-                    <span>🌙 Dark</span> <div class="radio-dot"></div>
-                </div>
-                <div class="theme-opt" id="opt-light" onclick="setTheme('light')">
-                    <span>☀️ Light</span> <div class="radio-dot"></div>
-                </div>
-                <div class="theme-opt" id="opt-badger" onclick="setTheme('badger')">
-                    <span>🦡 Badger</span> <div class="radio-dot"></div>
-                </div>
-                <div class="theme-opt" id="opt-ocean" onclick="setTheme('ocean')">
-                    <span>🌊 Ocean</span> <div class="radio-dot"></div>
-                </div>
+                <div class="theme-opt" id="opt-dark" onclick="setTheme('dark')"><span>🌙 Dark</span><div class="radio-dot"></div></div>
+                <div class="theme-opt" id="opt-light" onclick="setTheme('light')"><span>☀️ Light</span><div class="radio-dot"></div></div>
+                <div class="theme-opt" id="opt-badger" onclick="setTheme('badger')"><span>🦡 Badger</span><div class="radio-dot"></div></div>
+                <div class="theme-opt" id="opt-ocean" onclick="setTheme('ocean')"><span>🌊 Ocean</span><div class="radio-dot"></div></div>
             </div>
         </div>
     </header>
-
     <main>
-        <section class="hero">
-            <h1>My Technical Work</h1>
-        </section>
-
+        <section class="hero"><h1>My Technical Work</h1></section>
         <div class="projects-container">
             <article class="project-card">
                 <div class="project-info">
-                    <h2>GradeCalc & GradeCalc Sync Pro</h2>
-                    <p>A full-stack suite designed to eliminate university grading guesswork by integrating directly with the Canvas LMS API.</p>
-                    <ul>
-                        <li><strong>One-Click Canvas Syncing</strong>: Published Chrome Extension imports active assignments and complex grading rules instantly.</li>
-                        <li><strong>Advanced Grade Simulation</strong>: Features a "What-If" simulator and target score calculator to determine exact final exam requirements.</li>
-                        <li><strong>Interactive Analytics</strong>: Utilizes Chart.js to visualize semester-over-semester GPA trends in a responsive UI.</li>
-                    </ul>
-                    <div class="tech-tags">
-                        <span>Java</span> <span>Spring Boot</span> <span>PostgreSQL</span> <span>JavaScript</span> <span>Canvas API</span>
-                    </div>
+                    <h2>GradeCalc Sync Pro</h2>
+                    <p>LMS integration suite using Spring Boot and Chrome Extension to automate GPA tracking and syncing.</p>
+                    <div class="tech-tags"><span>Java</span><span>JavaScript</span><span>Canvas API</span></div>
                 </div>
-                <div class="project-visual">
-                    <img src="icon.jpeg" alt="GradeCalc Icon" class="project-img">
-                </div>
+                <img src="icon.jpeg" alt="GradeCalc" class="project-img">
             </article>
-
             <article class="project-card reverse">
                 <div class="project-info">
-                    <h2>BadgerPlay (CheeseHacks Hackathon)</h2>
-                    <p>A mobile-first platform for UW-Madison students to host and join pickup sports games in real-time across campus facilities like the Bakke or SERF.</p>
-                    <ul>
-                        <li><strong>Game Discovery</strong>: Live feed of upcoming games with verified student badges and invite-only "Private Games" system.</li>
-                        <li><strong>Social Interactions</strong>: Integrated real-time messaging using strategic polling for a responsive community experience.</li>
-                        <li><strong>Modern Stack</strong>: Engineered from scratch using React, Node.js, and MongoDB Atlas for flexible data storage.</li>
-                    </ul>
-                    <div class="award-badge">🏆 Winner: "Most Madison" Award</div>
-                    <div class="tech-tags">
-                        <span>React</span> <span>Node.js</span> <span>MongoDB</span> <span>Tailwind CSS</span>
-                    </div>
+                    <h2>BadgerPlay (CheeseHacks)</h2>
+                    <p>Mobile platform for pickup sports at UW-Madison.</p>
+                    <div class="award-badge">🏆 Winner: "Most Madison"</div>
+                    <div class="tech-tags"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
                 </div>
-                <div class="project-visual">
-                    <img src="badgerplay.jpeg" alt="BadgerPlay Interface" class="project-img">
-                </div>
+                <img src="badgerplay.jpeg" alt="BadgerPlay" class="project-img">
             </article>
-
             <article class="project-card">
                 <div class="project-info">
-                    <h2>Nexus Inventory - Full Stack Catalog</h2>
-                    <p>A robust Full-Stack application for e-commerce inventory management developed during a hackathon, demonstrating a complete implementation of the MVC architecture.</p>
-                    <ul>
-                        <li><strong>Backend Engineering</strong>: Built with Java Spring Boot, utilizing Spring Security and Spring Data JPA for data mapping.</li>
-                        <li><strong>REST API Design</strong>: Developed secure endpoints for full CRUD operations and custom SQL-based search queries.</li>
-                        <li><strong>Dynamic Frontend</strong>: Features an Admin Dashboard UI built with HTML/CSS and Fetch API for real-time data rendering.</li>
-                    </ul>
-                    <div class="tech-tags">
-                        <span>Java</span> <span>Spring Boot</span> <span>MySQL</span> <span>JavaScript</span>
-                    </div>
+                    <h2>Nexus Inventory</h2>
+                    <p>E-commerce inventory management system built during a hackathon.</p>
+                    <div class="tech-tags"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
                 </div>
-                <div class="project-visual">
-                    <img src="ecommerce.jpg" alt="Nexus Inventory Dashboard" class="project-img">
-                </div>
+                <img src="ecommerce.jpg" alt="Nexus" class="project-img">
             </article>
-
-            <article class="project-card reverse">
-                <div class="project-info">
-                    <h2>Hotel Management System</h2>
-                    <p>A desktop application designed for streamlined hospitality operations, featuring a full graphical interface and database persistence.</p>
-                    <ul>
-                        <li><strong>Database Integration</strong>: Structured SQL query management for customer records, room types, and services.</li>
-                        <li><strong>User Interface</strong>: Built with Python and Tkinter for a seamless, functional desktop experience.</li>
-                    </ul>
-                    <div class="tech-tags">
-                        <span>Python</span> <span>Tkinter</span> <span>MySQL</span>
-                    </div>
-                </div>
-                <div class="project-visual">
-                    <img src="hotelmanagement.png" alt="Hotel Management UI" class="project-img">
-                </div>
-            </article>
-
-            <section class="mini-projects">
-                <h3>Mini Games & Problem Solving</h3>
-                <div class="mini-grid">
-                    <div class="mini-item">
-                        <h4>Logic Games (Python)</h4>
-                        <p>Refining skills through interactive console projects like Blackjack, Higher or Lower, and Auction Systems.</p>
-                    </div>
-                    <div class="mini-item">
-                        <h4>Competitive Programming</h4>
-                        <p>Regularly solving algorithmic challenges on LeetCode to strengthen optimization and analytical thinking.</p>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
-
-    <footer>
-        <p>© 2026 Harshit Prithiani</p>
-        <div class="socials">
-            <a href="https://instagram.com/harshatjames" target="_blank"><img src="instagram.png" alt="Instagram"></a>
-            <a href="https://linkedin.com/in/harshit-prithiani-4a9555313" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
-            <a href="https://github.com/harshitp23" target="_blank"><img src="github.png" alt="GitHub"></a>
-        </div>
-    </footer>
-
+    <footer><p>© 2026 Harshit Prithiani</p></footer>
     <script>
         function toggleThemeMenu() { document.getElementById('themeMenu').classList.toggle('show'); }
-
         function setTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
@@ -252,17 +107,7 @@
             document.querySelectorAll('.theme-opt').forEach(opt => opt.classList.remove('active'));
             document.getElementById('opt-' + theme).classList.add('active');
         }
-
-        window.onclick = function(event) {
-            if (!event.target.matches('.palette-btn')) {
-                var dropdowns = document.getElementsByClassName("theme-dropdown");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    if (dropdowns[i].classList.contains('show')) dropdowns[i].classList.remove('show');
-                }
-            }
-        }
-
-        window.onload = () => { setTheme(localStorage.getItem('theme') || 'light'); }
+        window.onload = () => setTheme(localStorage.getItem('theme') || 'light');
     </script>
 </body>
 </html>
